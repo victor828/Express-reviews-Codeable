@@ -1,6 +1,9 @@
 import express from "express";
 
 const app = express();
-const port = 5500;
+const PORT = 5500; //* <-- podemos cambiar a 0 y elegira automaticamente un puerto libre
 
-app.listen(port, () => console.log(`Escuchando al puerto ${port}`));
+const server = app.listen(PORT, () => {
+  const { port } = server.address() as any;
+  console.log(`Escuchando en  http://localhost${port}`);
+});
